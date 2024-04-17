@@ -1,35 +1,54 @@
 function getComputerChoice() {
-    const index = Math.floor((Math.random() * 3))
-    const choices = ['Rock', 'Paper', 'Scissors']
+    const index = Math.floor((Math.random() * 3));
+    const choices = ['Rock', 'Paper', 'Scissors'];
     return choices[index]
 }
 
 function playRound(playerSelection, computerSelection) {
-    const player = playerSelection.toLowerCase()
+    
+    const player = playerSelection.toLowerCase();
     if (player === 'rock') {
         if (computerSelection === 'Rock') {
-            return `Tie! Player: Rock, Computer: Rock`
+            console.log(`Tie! Player: Rock, Computer: Rock`); 
+            return 0
         } else if (computerSelection === 'Paper') {
-            return `You lose! Paper beats Rock!`
+            console.log(`You lose! Paper beats Rock!`);
+            return -1
         } else {
-            return `You win! Rock beat Scissors!`
+            console.log(`You win! Rock beat Scissors!`);
+            return 1
         }
     } else if (player == 'paper') {
         if (computerSelection === 'Rock') {
-            return `You win! Paper beats Rock!`
+            console.log(`You win! Paper beats Rock!`);
+            return 1
         } else if (computerSelection === 'Paper') {
-            return `Tie! Player: Paper, Computer: Paper`
+            console.log(`Tie! Player: Paper, Computer: Paper`);
+            return 0
         } else {
-            return `You lose! Scissors beat Paper`
+            console.log(`You lose! Scissors beat Paper`);
+            return -1
         }
     } else if (player === 'scissors') {
         if (computerSelection === 'Rock') {
-            return `You lose! Rock beats Scissors`
+            console.log(`You lose! Rock beats Scissors`);
+            return -1
         } else if (computerSelection === 'Paper') {
-            return `You win! Scissors beat Paper!`
+            console.log(`You win! Scissors beat Paper!`);
+            return 1
         } else {
-            return `Tie! Player: Scissors, Computer: Scissors`
+            console.log(`Tie! Player: Scissors, Computer: Scissors`)
+            return 0
         }
     }
 
+}
+
+function playGame() {
+    let p1 = 0;
+    let p2 = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Rock, Paper, or Scissors?: ');
+        
+    }
 }
