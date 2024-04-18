@@ -58,9 +58,9 @@ function playGame() {
         }
     };
     if (p1 > p2) {
-        return `Player Wins! Score - Player: ${p1}, Computer: ${p2}`
+        console.log(`Player Wins! Score - Player: ${p1}, Computer: ${p2}`)
     } else {
-        return `Computer Wins! Score - Player: ${p1}, Computer: ${p2}`
+        console.log(`Computer Wins! Score - Player: ${p1}, Computer: ${p2}`)
     };
 
 }
