@@ -49,6 +49,18 @@ function playGame() {
     let p2 = 0;
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt('Rock, Paper, or Scissors?: ');
-        
-    }
+        const computer = getComputerChoice()
+        let result = playRound(playerSelection, computer)
+        if (result == 1) {
+            p1 += 1;
+        } else if (result == -1) {
+            p2 += 1;
+        }
+    };
+    if (p1 > p2) {
+        return `Player Wins! Score - Player: ${p1}, Computer: ${p2}`
+    } else {
+        return `Computer Wins! Score - Player: ${p1}, Computer: ${p2}`
+    };
+
 }
