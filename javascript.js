@@ -62,9 +62,13 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+const buttons = document.querySelectorAll('button');
 
-rock.addEventListener('click', (e) => {
-    const playerChoice = e.target.id;
-    const computerChoice = getComputerChoice();
-    const result = playGame(playRound(playerChoice,computerChoice));
-});
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const playerChoice = e.target.id;
+        const computerChoice = getComputerChoice();
+        const result = playGame(playRound(playerChoice,computerChoice));
+    })
+})
+
