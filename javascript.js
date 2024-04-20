@@ -44,23 +44,27 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function playGame() {
-    let p1 = 0;
-    let p2 = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt('Rock, Paper, or Scissors?: ');
-        const computer = getComputerChoice()
-        let result = playRound(playerSelection, computer)
-        if (result == 1) {
-            p1 += 1;
-        } else if (result == -1) {
-            p2 += 1;
-        }
-    };
-    if (p1 > p2) {
-        console.log(`Player Wins! Score - Player: ${p1}, Computer: ${p2}`)
+function playGame(roundResult) {
+    if (roundResult === 1) {
+        ++p1;
+        console.log(`Player Wins! Score - Player: ${p1}, Computer: ${p2}`);
+    } else if (roundResult === -1) {
+        ++p2;
+        console.log(`Computer Wins! Score - Player: ${p1}, Computer: ${p2}`);
     } else {
-        console.log(`Computer Wins! Score - Player: ${p1}, Computer: ${p2}`)
+        console.log(`Tie! Score - Player: ${p1}, Computer: ${p2}`)
     };
+};
 
-}
+let p1 = 0;
+let p2 = 0;
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+
+rock.addEventListener('click', (e) => {
+    const playerChoice = e.target.id;
+    const computerChoice = getComputerChoice();
+    const result = playGame(playRound(playerChoice,computerChoice));
+});
