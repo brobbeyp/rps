@@ -75,11 +75,11 @@ function isGameOver () {
 function endGame () {
     if (isGameOver()) {
         if (playerScore > computerScore) {
-            let gameOver = `GAME OVER Player WINS! Player: ${playerScore},
+            let gameOver = `GAME OVER! Player WINS! Player: ${playerScore},
                             Computer: ${computerScore}`;
             createRoundPara(gameOver);
         } else {
-            let gameOver = `GAME OVER Computer WINS! Player: ${playerScore},
+            let gameOver = `GAME OVER! Computer WINS! Player: ${playerScore},
                             Computer: ${computerScore}`;
             createRoundPara(gameOver);
         };
