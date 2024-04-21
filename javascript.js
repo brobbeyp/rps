@@ -68,24 +68,49 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+function isGameOver () {
+    return (playerScore + computerScore === 5);
+};
+
+function endGame () {
+    if (isGameOver()) {
+        if (playerScore > computerScore) {
+            let gameOver = `GAME OVER Player WINS! Player: ${playerScore},
+                            Computer: ${computerScore}`;
+            createRoundPara(gameOver);
+        } else {
+            let gameOver = `GAME OVER Computer WINS! Player: ${playerScore},
+                            Computer: ${computerScore}`;
+            createRoundPara(gameOver);
+        };
+        rock.disabled = true;
+        scissors.disabled = true;
+        paper.disabled = true;
+    }
+}
 
 function playGame(roundResult) {
     if (roundResult === 1) {
         ++playerScore;
 
-        const textContent = (`Player Wins! Score - Player: ${playerScore}, Computer: ${computerScore}`);
+        const textContent = (`Player Wins! Score - Player: ${playerScore},
+                             Computer: ${computerScore}`);
         createRoundPara(textContent);
-    
+        endGame();
 
     } else if (roundResult === -1) {
         ++computerScore;
 
-        const textContent = (`Computer Wins! Score - Player: ${playerScore}, Computer: ${computerScore}`);
+        const textContent = (`Computer Wins! Score - Player: ${playerScore},
+                            Computer: ${computerScore}`);
         createRoundPara(textContent);
+        endGame();
 
     } else {
-        const textContent = (`Tie! Score - Player: ${playerScore}, Computer: ${computerScore}`)
+        const textContent = (`Tie! Score - Player: ${playerScore},
+                             Computer: ${computerScore}`)
         createRoundPara(textContent);
+        endGame();
 
     };
 };
