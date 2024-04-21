@@ -2,43 +2,68 @@ function getComputerChoice() {
     const index = Math.floor((Math.random() * 3));
     const choices = ['Rock', 'Paper', 'Scissors'];
     return choices[index]
-}
+};
+
+function createRoundPara (text) {
+    let roundPara = document.createElement('p');
+    roundPara.textContent = text;
+    results.appendChild(roundPara);
+};
 
 function playRound(playerSelection, computerSelection) {
+
     
     const player = playerSelection.toLowerCase();
     if (player === 'rock') {
         if (computerSelection === 'Rock') {
-            console.log(`Tie! Player: Rock, Computer: Rock`); 
+            let roundText = (`Tie! Player: Rock, Computer: Rock`);
+            createRoundPara(roundText);
+
             return 0
         } else if (computerSelection === 'Paper') {
-            console.log(`You lose! Paper beats Rock!`);
+            let roundText = (`You lose! Paper beats Rock!`);
+            createRoundPara(roundText);
+
             return -1
         } else {
-            console.log(`You win! Rock beat Scissors!`);
+            let roundText = (`You win! Rock beat Scissors!`);
+            createRoundPara(roundText);
+            
             return 1
         }
     } else if (player == 'paper') {
         if (computerSelection === 'Rock') {
-            console.log(`You win! Paper beats Rock!`);
+            let roundText = (`You win! Paper beats Rock!`);
+            createRoundPara(roundText);
+
             return 1
         } else if (computerSelection === 'Paper') {
-            console.log(`Tie! Player: Paper, Computer: Paper`);
+            let roundText = (`Tie! Player: Paper, Computer: Paper`);
+            createRoundPara(roundText);
+
             return 0
         } else {
-            console.log(`You lose! Scissors beat Paper`);
+            let roundText = (`You lose! Scissors beat Paper`);
+            createRoundPara(roundText);
+
             return -1
         }
     } else if (player === 'scissors') {
         if (computerSelection === 'Rock') {
-            console.log(`You lose! Rock beats Scissors`);
+            let roundText = (`You lose! Rock beats Scissors`);
+            createRoundPara(roundText);
+
             return -1
         } else if (computerSelection === 'Paper') {
-            console.log(`You win! Scissors beat Paper!`);
+            let roundText = (`You win! Scissors beat Paper!`);
+            createRoundPara(roundText);
+
             return 1
         } else {
-            console.log(`Tie! Player: Scissors, Computer: Scissors`)
-            return 0
+            let roundText = (`Tie! Player: Scissors, Computer: Scissors`);
+            createRoundPara(roundText);
+
+            return 0;
         }
     }
 
@@ -46,22 +71,31 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame(roundResult) {
     if (roundResult === 1) {
-        ++p1;
-        console.log(`Player Wins! Score - Player: ${p1}, Computer: ${p2}`);
+        ++playerScore;
+
+        const textContent = (`Player Wins! Score - Player: ${playerScore}, Computer: ${computerScore}`);
+        createRoundPara(textContent);
+    
+
     } else if (roundResult === -1) {
-        ++p2;
-        console.log(`Computer Wins! Score - Player: ${p1}, Computer: ${p2}`);
+        ++computerScore;
+
+        const textContent = (`Computer Wins! Score - Player: ${playerScore}, Computer: ${computerScore}`);
+        createRoundPara(textContent);
+
     } else {
-        console.log(`Tie! Score - Player: ${p1}, Computer: ${p2}`)
+        const textContent = (`Tie! Score - Player: ${playerScore}, Computer: ${computerScore}`)
+        createRoundPara(textContent);
+
     };
 };
 
-let p1 = 0;
-let p2 = 0;
+let playerScore = 0;
+let computerScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
-
+const results = document.querySelector('#results')
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
@@ -71,4 +105,6 @@ buttons.forEach(button => {
         const result = playGame(playRound(playerChoice,computerChoice));
     })
 })
+
+
 
